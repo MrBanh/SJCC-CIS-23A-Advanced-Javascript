@@ -39,7 +39,6 @@ const setUpPage = async () => {
     if (assignLinksClicked.textContent !== "Home") {
         document.querySelector("#nav").scrollIntoView();
     }
-
 }
 
 window.addEventListener("load", setUpPage, false);

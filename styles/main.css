@@ -16,6 +16,10 @@ body {
     margin: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
 #header {
     grid-area: header;
     display: flex;
@@ -140,16 +144,44 @@ body {
     grid-area: article;
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-#article * {
-    margin: auto;
-    padding: 10px 10px;
+/* Handle card styling */
+.fullCard {
+    width: 250px;
+    height: 250px;
+    border-radius: 5%;
+    padding: 5px;
+    margin: 10px 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.19);
+    background: #fc4a1a;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f7b733, #d44c27);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f7b733, #d44c27);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
+
+.cardTitle {
+    text-align: center;
+    color: white;
+    height: 100%;
+    padding: 10px;
+    font-size: 30px;
+    font-weight: 200;
+}
+
+/*  end of card styling */
 
 #footer {
     grid-area: footer;
     text-align: center;
+    margin-top: 10vh;
+    bottom: 0;
 }
 
 #footer-title {
@@ -180,7 +212,7 @@ body {
             "nav"
             "article"
             "footer";
-        grid-template-rows: 80% 20% 80% 10%;
+        grid-template-rows: 80% 20% 1fr 1fr;
         grid-template-columns: 1fr;
     }
 
