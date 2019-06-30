@@ -3,15 +3,12 @@ html {
 }
 
 body {
-    display: -ms-grid;
     display: grid;
     grid-template-areas:
         "header header"
         "nav article"
         "footer footer";
-    -ms-grid-rows: 100% 10px 1fr 10px 1fr;
     grid-template-rows: 100% 1fr 1fr;
-    -ms-grid-columns: 175px 10px 1fr;
     grid-template-columns: 175px 1fr;
     grid-gap: 10px;
     height: 100vh;
@@ -24,19 +21,10 @@ a {
 }
 
 #header {
-    -ms-grid-row: 1;
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 3;
     grid-area: header;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     position: relative;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
 }
 
@@ -61,7 +49,6 @@ a {
 }
 
 .arrowBounce {
-    -webkit-animation: bounce 2s infinite;
     animation: bounce 2s infinite;
     max-width: 40px;
     max-height: 40px;
@@ -72,33 +59,9 @@ a {
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     height: 26px;
     width: 18px;
-}
-
-@-webkit-keyframes bounce {
-
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-    }
-
-    40% {
-        -webkit-transform: translateY(-30px);
-        transform: translateY(-30px);
-    }
-
-    60% {
-        -webkit-transform: translateY(-15px);
-        transform: translateY(-15px);
-    }
 }
 
 @keyframes bounce {
@@ -108,48 +71,32 @@ a {
     50%,
     80%,
     100% {
-        -webkit-transform: translateY(0);
         transform: translateY(0);
     }
 
     40% {
-        -webkit-transform: translateY(-30px);
         transform: translateY(-30px);
     }
 
     60% {
-        -webkit-transform: translateY(-15px);
         transform: translateY(-15px);
     }
 }
 
 #nav {
-    -ms-grid-row: 3;
-    -ms-grid-column: 1;
     grid-area: nav;
 }
 
 #nav>ul {
     height: 100%;
     padding-left: 0;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
     flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
 }
 
 #nav li {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
     text-align: center;
     margin: 20px 0px 50px;
@@ -171,27 +118,13 @@ a {
     height: 1px;
     background: currentColor;
 
-    -webkit-transform: scaleX(0);
-
-    -ms-transform: scaleX(0);
-
     transform: scaleX(0);
-    -webkit-transform-origin: right;
-    -ms-transform-origin: right;
     transform-origin: right;
-    -webkit-transition: -webkit-transform 250ms ease-in;
-    transition: -webkit-transform 250ms ease-in;
-    -o-transition: transform 250ms ease-in;
     transition: transform 250ms ease-in;
-    transition: transform 250ms ease-in, -webkit-transform 250ms ease-in;
 }
 
 .links:hover::after {
-    -webkit-transform: scaleX(1);
-    -ms-transform: scaleX(1);
     transform: scaleX(1);
-    -webkit-transform-origin: left;
-    -ms-transform-origin: left;
     transform-origin: left;
 }
 
@@ -204,56 +137,32 @@ a {
     height: 1px;
     background: currentColor;
 
-    -webkit-transform: none;
-
-    -ms-transform: none;
-
     transform: none;
 }
 
 #article {
-    -ms-grid-row: 3;
-    -ms-grid-column: 3;
     grid-area: article;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
-    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
 
 /* Handle card styling */
 .fullCard {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
     flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
     width: 250px;
     height: 250px;
     border-radius: 3%;
     margin: 10px 10px;
     border: 1px solid #ccc;
-    -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.19);
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.19);
     background: #fc4a1a;
     /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #f7b733, #d44c27);
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-gradient(linear, left top, right top, from(#f7b733), to(#d44c27));
-    background: -webkit-linear-gradient(left, #f7b733, #d44c27);
-    background: -o-linear-gradient(left, #f7b733, #d44c27);
     background: linear-gradient(to right, #f7b733, #d44c27);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
@@ -261,15 +170,8 @@ a {
 
 .cardTitle {
     text-align: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
     flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
     border-radius: inherit;
     height: 95%;
@@ -292,24 +194,14 @@ a {
     min-height: 350px;
     min-width: 350px;
     border-radius: 50%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
     flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
 
     background: #fc4a1a;
     /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #f7b733, #d44c27);
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-gradient(linear, left top, right top, from(#f7b733), to(#d44c27));
-    background: -webkit-linear-gradient(left, #f7b733, #d44c27);
-    background: -o-linear-gradient(left, #f7b733, #d44c27);
     background: linear-gradient(to right, #f7b733, #d44c27);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
@@ -318,15 +210,8 @@ a {
     border-radius: 50%;
     min-height: 340px;
     min-width: 340px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
     flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
 
     background-color: white;
@@ -366,9 +251,6 @@ a {
 /* End of Assignment 2 styling */
 
 #footer {
-    -ms-grid-row: 5;
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 3;
     grid-area: footer;
     text-align: center;
     margin-top: 10vh;
@@ -403,9 +285,7 @@ a {
             "nav"
             "article"
             "footer";
-        -ms-grid-rows: 80% 10px 20% 10px 1fr 10px 1fr;
         grid-template-rows: 80% 20% 1fr 1fr;
-        -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
     }
 
@@ -415,7 +295,6 @@ a {
     }
 
     #header>img {
-        -o-object-fit: cover;
         object-fit: cover;
     }
 
@@ -429,22 +308,14 @@ a {
     }
 
     #nav>ul {
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: row;
         flex-direction: row;
-        -ms-flex-wrap: wrap;
         flex-wrap: wrap;
         margin: 0;
         height: 80%;
     }
 
     #nav li {
-        display: -webkit-inline-box;
-        display: -ms-inline-flexbox;
         display: inline-flex;
         margin: 5px 5px;
     }
@@ -453,28 +324,6 @@ a {
         padding: 0;
         margin: auto;
         text-align: center;
-    }
-
-    #header {
-        -ms-grid-row: 1;
-        -ms-grid-column: 1;
-        -ms-grid-column-span: 1;
-    }
-
-    #nav {
-        -ms-grid-row: 3;
-        -ms-grid-column: 1;
-    }
-
-    #article {
-        -ms-grid-row: 5;
-        -ms-grid-column: 1;
-    }
-
-    #footer {
-        -ms-grid-row: 7;
-        -ms-grid-column: 1;
-        -ms-grid-column-span: 1;
     }
 
 }
