@@ -283,15 +283,9 @@ a {
 
 /*  end of card styling */
 
-/* Assignment 1 - Temperature Converter */
-
-/* end of Assignment 1 styling */
-
-/* Assignment 2 - Background Color Change and Stopwatch */
 #outer-border {
     min-height: 350px;
     min-width: 350px;
-    border-radius: 50%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -314,8 +308,7 @@ a {
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-#stopwatch-container {
-    border-radius: 50%;
+#inner-container {
     min-height: 340px;
     min-width: 340px;
     display: -webkit-box;
@@ -325,20 +318,88 @@ a {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
 
     background-color: white;
     margin: 0 auto;
 }
 
+/* Assignment 1 - Temperature Converter */
+
+#assignment-title {
+    width: 100%;
+    font-size: 1.5em;
+    text-align: center;
+    margin: 0 auto;
+    color: #d44c27;
+    margin-top: 10px;
+}
+
+/* Removes the number scroll for input type="number" */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.styleBlocks {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+label {
+    color: #e0461c;
+    font-weight: 600;
+}
+
+label[for="celsius"] {
+    color: #f3ae23;
+    font-weight: 600;
+}
+
+#buttons {
+    text-align: center;
+}
+
+#submit-btn {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: white;
+    color: #f3ae23;
+    border: none;
+}
+
+#reset-btn {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: white;
+    color: #d44c27;
+    border: none;
+}
+
+#displayResults {
+    font-size: 6em;
+    font-weight: 500;
+    text-align: center;
+    color: #d44c27;
+}
+
+/* end of Assignment 1 styling */
+
+/* Assignment 2 - Background Color Change and Stopwatch */
 #display-stopwatch {
     width: 100%;
     font-size: 70px;
     text-align: center;
     margin: 0 auto;
     color: #d44c27;
+    margin-top: 25%;
 }
 
 #buttons-stopwatch {
