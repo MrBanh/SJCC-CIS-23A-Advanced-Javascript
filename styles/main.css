@@ -73,7 +73,6 @@ a {
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     height: 26px;
     width: 18px;
@@ -173,25 +172,19 @@ a {
 
     -webkit-transform: scaleX(0);
 
-    -ms-transform: scaleX(0);
-
     transform: scaleX(0);
     -webkit-transform-origin: right;
-    -ms-transform-origin: right;
     transform-origin: right;
     -webkit-transition: -webkit-transform 250ms ease-in;
     transition: -webkit-transform 250ms ease-in;
-    -o-transition: transform 250ms ease-in;
     transition: transform 250ms ease-in;
     transition: transform 250ms ease-in, -webkit-transform 250ms ease-in;
 }
 
 .links:hover::after {
     -webkit-transform: scaleX(1);
-    -ms-transform: scaleX(1);
     transform: scaleX(1);
     -webkit-transform-origin: left;
-    -ms-transform-origin: left;
     transform-origin: left;
 }
 
@@ -205,8 +198,6 @@ a {
     background: currentColor;
 
     -webkit-transform: none;
-
-    -ms-transform: none;
 
     transform: none;
 }
@@ -249,11 +240,8 @@ a {
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.19);
     background: #fc4a1a;
     /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #f7b733, #d44c27);
     /* Chrome 10-25, Safari 5.1-6 */
     background: -webkit-gradient(linear, left top, right top, from(#f7b733), to(#d44c27));
-    background: -webkit-linear-gradient(left, #f7b733, #d44c27);
-    background: -o-linear-gradient(left, #f7b733, #d44c27);
     background: linear-gradient(to right, #f7b733, #d44c27);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
@@ -299,11 +287,8 @@ a {
 
     background: #fc4a1a;
     /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #f7b733, #d44c27);
     /* Chrome 10-25, Safari 5.1-6 */
     background: -webkit-gradient(linear, left top, right top, from(#f7b733), to(#d44c27));
-    background: -webkit-linear-gradient(left, #f7b733, #d44c27);
-    background: -o-linear-gradient(left, #f7b733, #d44c27);
     background: linear-gradient(to right, #f7b733, #d44c27);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
@@ -346,7 +331,11 @@ input[type=number] {
 }
 
 .styleBlocks {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     margin: 20px auto;
 }
