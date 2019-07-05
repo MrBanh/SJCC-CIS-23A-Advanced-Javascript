@@ -1,5 +1,5 @@
 html {
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
 }
 
 body {
@@ -68,7 +68,7 @@ a {
 }
 
 .arrowBounce::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -79,7 +79,6 @@ a {
 }
 
 @-webkit-keyframes bounce {
-
     0%,
     20%,
     50%,
@@ -101,7 +100,6 @@ a {
 }
 
 @keyframes bounce {
-
     0%,
     20%,
     50%,
@@ -128,7 +126,7 @@ a {
     grid-area: nav;
 }
 
-#nav>ul {
+#nav > ul {
     height: 100%;
     padding-left: 0;
     display: -webkit-box;
@@ -162,7 +160,7 @@ a {
 }
 
 .links::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     bottom: 0;
@@ -189,7 +187,7 @@ a {
 }
 
 #selectedLi::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     bottom: 0;
@@ -241,10 +239,15 @@ a {
     background: #fc4a1a;
     /* fallback for old browsers */
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-gradient(linear, left top, right top, from(#f7b733), to(#d44c27));
+    background: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        from(#f7b733),
+        to(#d44c27)
+    );
     background: linear-gradient(to right, #f7b733, #d44c27);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
 }
 
 .cardTitle {
@@ -288,7 +291,13 @@ a {
     background: #fc4a1a;
     /* fallback for old browsers */
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-gradient(linear, left top, right top, from(#f7b733), to(#d44c27));
+    background: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        from(#f7b733),
+        to(#d44c27)
+    );
     background: linear-gradient(to right, #f7b733, #d44c27);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
@@ -320,13 +329,13 @@ a {
 }
 
 /* Removes the number scroll for input type="number" */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
-input[type=number] {
+input[type="number"] {
     -moz-appearance: textfield;
 }
 
@@ -415,6 +424,65 @@ label[for="celsius"] {
 
 /* End of Assignment 2 styling */
 
+/* Assignment 3 - Digit to Text Converter */
+
+#check-leaf {
+    background-image: url("../images/check-leaf.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 330px;
+    width: 730px;
+    position: relative;
+}
+
+#userName {
+    position: absolute;
+    top: 8%;
+    left: 5%;
+}
+
+#bankInfo {
+    position: absolute;
+    top: 15%;
+    left: 5%;
+}
+
+#checkDate {
+    position: absolute;
+    top: 20%;
+    right: 18%;
+    font-size: .9rem;
+}
+
+#checkAmount {
+    position: absolute;
+    top: 35%;
+    right: 5.4%;
+    width: 117px;
+    height: 22px;
+}
+
+#payTo {
+    position: absolute;
+    width: 59%;
+    top: 36%;
+    left: 14%;
+}
+
+#memo {
+    position: absolute;
+    bottom: 19%;
+    left: 10%;
+}
+
+#digitToText {
+    position: absolute;
+    top: 48%;
+    left: 5%;
+    font-style: italic;
+}
+/* End of Assignment 3 styling */
+
 #footer {
     -ms-grid-row: 5;
     -ms-grid-column: 1;
@@ -443,7 +511,6 @@ label[for="celsius"] {
     #header-title {
         font-size: 50px;
     }
-
 }
 
 @media (max-width: 750px) {
@@ -464,7 +531,7 @@ label[for="celsius"] {
         padding: 0 20px;
     }
 
-    #header>img {
+    #header > img {
         -o-object-fit: cover;
         object-fit: cover;
     }
@@ -478,7 +545,7 @@ label[for="celsius"] {
         max-height: 20px;
     }
 
-    #nav>ul {
+    #nav > ul {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -526,5 +593,4 @@ label[for="celsius"] {
         -ms-grid-column: 1;
         -ms-grid-column-span: 1;
     }
-
 }

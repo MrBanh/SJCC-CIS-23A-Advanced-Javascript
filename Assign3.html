@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./styles/main.css">
-    <title>Tony Banh - CIS-023A - Summer '19</title>
+    <title>Digit to Text Converter</title>
 </head>
 
 <body>
@@ -36,8 +36,33 @@
 
     <!-- Content (Assignment) -->
     <article id="article">
-        <p>ARTICLE</p>
-
+        <!-- Check leaf form -->
+        <form id="checkLeafForm">
+            <!-- Title of Assignment -->
+            <h4 id="assignment-title" style="color: #90CCA8">Digit to Text - Check Leaf</h4>
+            <div id="check-leaf">
+                <!-- Check leaf data -->
+                <input type="text" name="userName" id="userName" placeholder="Enter name here" required>
+                <input type="date" name="checkDate" id="checkDate">
+                <input type="number" name="checkAmount" id="checkAmount" step=".01" placeholder="Amount" required>
+                <input type="text" name="payTo" id="payTo" placeholder="optional">
+                <input type="text" name="memo" id="memo" placeholder="optional">
+                <!-- Bank Info -->
+                <div id="bankInfo">
+                    <strong>Imaginary Bank</strong><br>
+                    1234 Fake Street, Suite 56<br>
+                    San Jose, CA 78910
+                </div>
+                <!-- Displays the result -->
+                <div id="digitToText">
+                </div>
+            </div>
+            <!-- Submit and Reset Btn -->
+            <div id="buttons">
+                <input type="submit" value="Submit" id="submit-btn" style="color: white; background-color: #90CCA8">
+                <input type="button" value="Reset" id="reset-btn" style="color: white; background-color: #90CCA8">
+            </div>
+        </form>
     </article>
 
     <!-- Footer -->
@@ -59,7 +84,8 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="./scripts/Assignment3.js"></script>
+
+    <script src="./scripts/Assignment3.js" type="text/javascript"></script>
 </body>
 
 </html>
