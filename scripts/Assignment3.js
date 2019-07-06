@@ -3,33 +3,82 @@
 const browserRegex = /Edge|rv:11/g;
 var isEdgeIE = browserRegex.test(navigator.userAgent);
 
-const digitToText = (amount) => {
+const digitToText = n => {
+    const num = [
+        "",
+        "one",
+        "two",
+        "three",
+        "four",
+        "five",
+        "six",
+        "seven",
+        "eight",
+        "nine",
+    ];
+
+    const numTeen = [
+        "ten",
+        "eleven",
+        "twelve",
+        "thirteen",
+        "fourteen",
+        "fifteen",
+        "sixteen",
+        "seventeen",
+        "eighteen",
+        "nineteen",
+    ];
+
+    const numTy = [
+        "",
+        "",
+        "twenty",
+        "thirty",
+        "forty",
+        "fifty",
+        "sixty",
+        "seventy",
+        "eighty",
+        "ninety",
+    ];
+    const numLion = [
+        "",
+        "thousand",
+        "million",
+        "billion",
+        "trillion",
+        "quadrillion",
+        "quintillion",
+        "sextillion",
+        "septillion",
+        "octillion",
+        "nonillion",
+    ];
+    return n;
+};
+
+const dollarsAndCents = amount => {
     let dollars;
     let cents;
-    if (amount.indexOf('.') > -1) {
+    if (amount.indexOf(".") > -1) {
         // Split the check amount by the .
-        dollars = Number(amount.split('.')[0]) || 0;
-        cents = Number(amount.split('.')[1]) || 0;
+        dollars = Number(amount.split(".")[0]) || 0;
+        cents = Number(amount.split(".")[1]) || 0;
+        return (
+            `${digitToText(dollars)} dollars` +
+            `and ${digitToText(cents)} cents`
+        );
     } else {
-        dollars = amount;
-        cents = 0;
+        dollars = Number(amount);
+        return `${digitToText(dollars)} dollars`;
     }
-
-    const digits = ['zero', 'one', 'two', 'three', 'four',
-        'five', 'six', 'seven', 'eight', 'nine'
-    ];
-
-    const tn = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen',
-        'seventeen', 'eighteen', 'nineteen'
-    ];
-
-    const tw = ['twenty', 'thirty', 'forty', 'fifty',
-        'sixty', 'seventy', 'eighty', 'ninety'
-    ];
-}
+};
 
 const enterUserData = () => {
-    const inputs = document.querySelectorAll("input[type='text'], input[type='date'], input[type='number']");
+    const inputs = document.querySelectorAll(
+        "input[type='text'], input[type='date'], input[type='number']",
+    );
     for (let input of inputs) {
         // Get data from sessionStorage
         input.value = sessionStorage.getItem(input.name);
@@ -39,15 +88,17 @@ const enterUserData = () => {
     const digitToTextField = document.querySelector("#digitToText");
 
     // Set the digitToTextField to the converted text
-    digitToTextField.textContent = digitToText(sessionStorage.checkAmount);
-}
+    digitToTextField.textContent = dollarsAndCents(sessionStorage.checkAmount);
+};
 
-const displayResult = (event) => {
+const displayResult = event => {
     // Prevents form from submitting first
     if (!isEdgeIE) {
         event.preventDefault();
         // Loop through all form inputs
-        const inputs = document.querySelectorAll("input[type='text'], input[type='date'], input[type='number']");
+        const inputs = document.querySelectorAll(
+            "input[type='text'], input[type='date'], input[type='number']",
+        );
         for (let input of inputs) {
             // Use sessionStorage to store user input
             sessionStorage.setItem(input.name, input.value);
@@ -62,24 +113,27 @@ const displayResult = (event) => {
         const digitToTextField = document.querySelector("#digitToText");
 
         // Set the digitToTextField to the converted text
-        digitToTextField.textContent = digitToText(document.querySelector("#checkAmount").value);
+        digitToTextField.textContent = dollarsAndCents(
+            document.querySelector("#checkAmount").value,
+        );
     }
-}
+};
 
 const resetForm = () => {
     if (isEdgeIE) {
-        const inputs = document.querySelectorAll("input[type='text'], input[type='date'], input[type='number']");
+        const inputs = document.querySelectorAll(
+            "input[type='text'], input[type='date'], input[type='number']",
+        );
         for (let input of inputs) {
             // Clear all input
-            input.value = '';
+            input.value = "";
         }
         // Clear converted text
-        document.querySelector("#digitToText").textContent = '';
+        document.querySelector("#digitToText").textContent = "";
     }
     sessionStorage.clear();
-    location.search = '';
-
-}
+    location.search = "";
+};
 
 const createEventListeners = () => {
     // Access the selectedLi link
@@ -98,7 +152,7 @@ const createEventListeners = () => {
 
     // Add event listener to the form
     const checkForm = document.querySelector("#checkLeafForm");
-    checkForm.addEventListener("submit", displayResult)
+    checkForm.addEventListener("submit", displayResult);
 
     // Add event listener for the reset button
     const resetBtn = document.querySelector("#reset-btn");
