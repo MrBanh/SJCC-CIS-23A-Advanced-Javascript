@@ -3,46 +3,91 @@
 const browserRegex = /Edge|rv:11/g;
 var isEdgeIE = browserRegex.test(navigator.userAgent);
 
+const digitToTextHelper = nStr => {
+    let n = Number(nStr);
+
+    if (n < 20) {
+        const units = [
+            "zero",
+            "one",
+            "two",
+            "three",
+            "four",
+            "five",
+            "six",
+            "seven",
+            "eight",
+            "nine",
+            "ten",
+            "eleven",
+            "twelve",
+            "thirteen",
+            "fourteen",
+            "fifteen",
+            "sixteen",
+            "seventeen",
+            "eighteen",
+            "nineteen",
+        ];
+        return units[n];
+    } else if (n >= 20 && n < 100) {
+        const tens = [
+            "",
+            "",
+            "twenty",
+            "thirty",
+            "forty",
+            "fifty",
+            "sixty",
+            "seventy",
+            "eighty",
+            "ninety",
+        ];
+
+        return Number(nStr.slice(1)) === 0
+            ? // If nStr ends with a 0 (e.g. "20" ends with zero, don't want "twenty zero")
+              tens[Number(nStr[0])]
+            : // If nStr ends with 1 - 9 (e.g. "59" --> take the "9" and recursively call digitToTextHelper to get "nine")
+              tens[Number(nStr[0])] + " " + digitToTextHelper(nStr.slice(1));
+    } else {
+        return Number(nStr.slice(1)) === 0
+            ? // If nStr ends with a 0 (e.g. "100" ends with zero, don't want "one hundred zero")
+              digitToTextHelper(nStr[0]) + " hundred"
+            : // if nStr ends with 1 - 99 (e.g. "155" --> take the "55" and recursively call digitToTextHelper to get "fifty five")
+              digitToTextHelper(nStr[0]) +
+                  " hundred " +
+                  digitToTextHelper(nStr.slice(1));
+    }
+};
+
 const digitToText = n => {
-    const num = [
-        "",
-        "one",
-        "two",
-        "three",
-        "four",
-        "five",
-        "six",
-        "seven",
-        "eight",
-        "nine",
-    ];
+    const numRegex = /(\d{1,3})/g;
+    // Since we want to start matching from the end of the number
+    // Convert the number to a string (e.g. 31546413 --> "31546413")
+    let nStr = n.toString();
+    // Reverse order of numbers (e.g. "31546413" --> "31464513")
+    let nStrReversed = nStr
+        .split("")
+        .reverse()
+        .join("");
+    // Get the group of digits (e.g. "31464513" returns ["314", "645", "13"])
+    let numGroups = nStrReversed.match(numRegex);
+    // Reverse each group of digits back to the original order (e.g. ["314", "645", "13"] --> ["413", "546", "31"])
+    // The last .reverse() reverses the array so the numbers are in the original order (e.g. ["413", "546", "31"] --> ["31", "546", "413"])
+    numGroups = numGroups
+        .map(numGroup =>
+            numGroup
+                .split("")
+                .reverse()
+                .join(""),
+        )
+        .reverse();
 
-    const numTeen = [
-        "ten",
-        "eleven",
-        "twelve",
-        "thirteen",
-        "fourteen",
-        "fifteen",
-        "sixteen",
-        "seventeen",
-        "eighteen",
-        "nineteen",
-    ];
-
-    const numTy = [
+    // If the numGroups contains 3 groups --> starts with "million"
+    // e.g. ["31", "546", "413"].length is 3 -->  starts with "million"
+    let scale = numGroups.length;
+    const scales = [
         "",
-        "",
-        "twenty",
-        "thirty",
-        "forty",
-        "fifty",
-        "sixty",
-        "seventy",
-        "eighty",
-        "ninety",
-    ];
-    const numLion = [
         "",
         "thousand",
         "million",
@@ -54,24 +99,50 @@ const digitToText = n => {
         "septillion",
         "octillion",
         "nonillion",
+        "decillion",
+        "undecillion",
+        "duodecillion",
+        "tredecillion",
+        "quatttuor-decillion",
+        "quindecillion",
+        "sexdecillion",
+        "septen-decillion",
+        "octodecillion",
+        "novemdecillion",
+        "vigintillion",
+        "centillion",
     ];
-    return n;
+
+    // Appends to the result array
+    let result = [];
+    for (let group of numGroups) {
+        // Go through each group in the numGroups (e.g. ["31", "546", "413"])
+        // Convert each group to the text equivalent (e.g. "thirty one")
+        // Depending on the length of the numGroups, also include the scale (e.g. "million")
+        result.push(`${digitToTextHelper(group)} ${scales[scale]}`);
+        // Go down to the next scale (e.g. "million", then "thousand")
+        scale--;
+    }
+
+    // Return Array joined together by comma and space to form a string
+    return result.join(", ");
 };
 
 const dollarsAndCents = amount => {
+    let amountStr = amount.toFixed(2);
     let dollars;
     let cents;
-    if (amount.indexOf(".") > -1) {
+    if (amountStr.indexOf(".") > -1) {
         // Split the check amount by the .
-        dollars = Number(amount.split(".")[0]) || 0;
-        cents = Number(amount.split(".")[1]) || 0;
+        dollars = Number(amountStr.split(".")[0]) || 0;
+        cents = Number(amountStr.split(".")[1]) || 0;
         return (
             `${digitToText(dollars)} dollars` +
-            `and ${digitToText(cents)} cents`
+            ` and ${digitToText(cents)} cents`
         );
     } else {
-        dollars = Number(amount);
-        return `${digitToText(dollars)} dollars`;
+        dollars = Number(amountStr);
+        return `${digitToText(dollars)} dollars and zero cents`;
     }
 };
 
@@ -88,7 +159,9 @@ const enterUserData = () => {
     const digitToTextField = document.querySelector("#digitToText");
 
     // Set the digitToTextField to the converted text
-    digitToTextField.textContent = dollarsAndCents(sessionStorage.checkAmount);
+    digitToTextField.textContent = dollarsAndCents(
+        Number(sessionStorage.checkAmount),
+    );
 };
 
 const displayResult = event => {
@@ -114,7 +187,7 @@ const displayResult = event => {
 
         // Set the digitToTextField to the converted text
         digitToTextField.textContent = dollarsAndCents(
-            document.querySelector("#checkAmount").value,
+            Number(document.querySelector("#checkAmount").value),
         );
     }
 };
