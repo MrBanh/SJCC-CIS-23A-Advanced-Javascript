@@ -11,80 +11,82 @@
 </head>
 
 <body>
-    <!-- Header -->
-    <header id="header">
-        <img id="header-background" src="./images/main-background.jpg"
-            alt="background image of chrome devtools showing html elements">
-        <h1 id="header-title">Tony Banh's Advanced JavaScript Assignments</h1>
-        <a id="arrow-container" href="#nav">
-            <img src="./images/scroll-arrow.svg" alt="arrow pointing down" class="arrowBounce">
-        </a>
-    </header>
+    <div id="body-container">
+        <!-- Header -->
+        <header id="header">
+            <img id="header-background" src="./images/main-background.jpg"
+                alt="background image of chrome devtools showing html elements">
+            <h1 id="header-title">Tony Banh's Advanced JavaScript Assignments</h1>
+            <a id="arrow-container" href="#nav">
+                <img src="./images/scroll-arrow.svg" alt="arrow pointing down" class="arrowBounce">
+            </a>
+        </header>
 
-    <!-- Navigation Left Column -->
-    <nav id="nav">
-        <ul>
-            <li><a class="links" href="./index.html">Home</a></li>
-            <li><a class="links" href="./Assign1.html">Assignment 1</a></li>
-            <li><a class="links" href="./Assign2.html">Assignment 2</a></li>
-            <li><a id="selectedLi" class="links" href="./Assign3.html">Assignment 3</a></li>
-            <li><a class="links" href="./Assign4.html">Assignment 4</a></li>
-            <li><a class="links" href="./Assign5.html">Assignment 5</a></li>
-            <li><a class="links" href="./Assign6.html">Assignment 6</a></li>
-        </ul>
-    </nav>
+        <!-- Navigation Left Column -->
+        <nav id="nav">
+            <ul>
+                <li><a class="links" href="./index.html">Home</a></li>
+                <li><a class="links" href="./Assign1.html">Assignment 1</a></li>
+                <li><a class="links" href="./Assign2.html">Assignment 2</a></li>
+                <li><a id="selectedLi" class="links" href="./Assign3.html">Assignment 3</a></li>
+                <li><a class="links" href="./Assign4.html">Assignment 4</a></li>
+                <li><a class="links" href="./Assign5.html">Assignment 5</a></li>
+                <li><a class="links" href="./Assign6.html">Assignment 6</a></li>
+            </ul>
+        </nav>
 
-    <!-- Content (Assignment) -->
-    <article id="article">
-        <!-- Check leaf form -->
-        <form id="checkLeafForm">
-            <!-- Title of Assignment -->
-            <h4 id="assignment-title" style="color: #90CCA8">Digit to Text - Check Leaf</h4>
-            <div id="check-leaf">
-                <!-- Check leaf data -->
-                <input type="text" name="userName" id="userName" placeholder="Enter name here" required>
-                <input type="date" name="checkDate" id="checkDate">
-                <input type="number" name="checkAmount" id="checkAmount" min="0" max="999999999" step=".01" placeholder="Amount" required>
-                <input type="text" name="payTo" id="payTo" placeholder="optional">
-                <input type="text" name="memo" id="memo" placeholder="optional">
-                <!-- Bank Info -->
-                <div id="bankInfo">
-                    <strong>Imaginary Bank</strong><br>
-                    1234 Fake Street, Suite 56<br>
-                    San Jose, CA 78910
+        <!-- Content (Assignment) -->
+        <article id="article">
+            <!-- Check leaf form -->
+            <form id="checkLeafForm">
+                <!-- Title of Assignment -->
+                <h4 id="assignment-title" style="color: #90CCA8">Digit to Text - Check Leaf</h4>
+                <div id="check-leaf">
+                    <!-- Check leaf data -->
+                    <input type="text" name="userName" id="userName" placeholder="Enter name here" required>
+                    <input type="date" name="checkDate" id="checkDate">
+                    <input type="number" name="checkAmount" id="checkAmount" min="0" max="999999999" step=".01"
+                        placeholder="Amount" required>
+                    <input type="text" name="payTo" id="payTo" placeholder="optional">
+                    <input type="text" name="memo" id="memo" placeholder="optional">
+                    <!-- Bank Info -->
+                    <div id="bankInfo">
+                        <strong>Imaginary Bank</strong><br>
+                        1234 Fake Street, Suite 56<br>
+                        San Jose, CA 78910
+                    </div>
+                    <!-- Displays the result -->
+                    <div id="digitToText">
+                    </div>
                 </div>
-                <!-- Displays the result -->
-                <div id="digitToText">
+                <!-- Submit and Reset Btn -->
+                <div id="buttons">
+                    <input type="submit" value="Submit" id="submit-btn" style="color: white; background-color: #90CCA8">
+                    <input type="button" value="Reset" id="reset-btn" style="color: white; background-color: #90CCA8">
                 </div>
-            </div>
-            <!-- Submit and Reset Btn -->
-            <div id="buttons">
-                <input type="submit" value="Submit" id="submit-btn" style="color: white; background-color: #90CCA8">
-                <input type="button" value="Reset" id="reset-btn" style="color: white; background-color: #90CCA8">
-            </div>
-        </form>
-    </article>
+            </form>
+        </article>
 
-    <!-- Footer -->
-    <footer id="footer">
-        <div id="footer-title"><u>CONTACT</u></div>
-        <address>
-            <p><strong> San Jose City College</strong></p>
-            <p>2100 Moorpark Ave,</p>
-            <p>San Jose, CA 95128</p>
-            <a id="email" href="mailto:tonybanhh@gmail.com">tonybanhh@gmail.com</a>
-            <div class="credits">
-                <div>Photo by Pankaj Patel on Unsplash</div>
-                <div>Icons made by <a href="https://www.flaticon.com/authors/daniel-bruce" title="Daniel Bruce">Daniel
-                        Bruce</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is
-                    licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0"
-                        target="_blank">CC 3.0 BY</a></div>
-            </div>
-        </address>
-    </footer>
-
+        <!-- Footer -->
+        <footer id="footer">
+            <div id="footer-title"><u>CONTACT</u></div>
+            <address>
+                <p><strong> San Jose City College</strong></p>
+                <p>2100 Moorpark Ave,</p>
+                <p>San Jose, CA 95128</p>
+                <a id="email" href="mailto:tonybanhh@gmail.com">tonybanhh@gmail.com</a>
+                <div class="credits">
+                    <div>Photo by Pankaj Patel on Unsplash</div>
+                    <div>Icons made by <a href="https://www.flaticon.com/authors/daniel-bruce"
+                            title="Daniel Bruce">Daniel
+                            Bruce</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is
+                        licensed by <a href="http://creativecommons.org/licenses/by/3.0/"
+                            title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+                </div>
+            </address>
+        </footer>
+    </div>
     <!-- Scripts -->
-
     <script src="./scripts/Assignment3.js" type="text/javascript"></script>
 </body>
 

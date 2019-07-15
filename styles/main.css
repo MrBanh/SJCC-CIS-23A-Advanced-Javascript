@@ -3,6 +3,10 @@ html {
 }
 
 body {
+    margin: 0;
+}
+
+#body-container {
     display: -ms-grid;
     display: grid;
     grid-template-areas:
@@ -17,6 +21,23 @@ body {
     height: 100vh;
     width: 100vw;
     margin: 0;
+}
+
+#body-container2 {
+    display: -ms-grid;
+    display: grid;
+    grid-template-areas:
+        "nav article"
+        "footer footer";
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 175px 1fr;
+    grid-gap: 10px;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    -webkit-box-align: initial;
+    -ms-flex-align: initial;
+    align-items: initial;
 }
 
 a {
@@ -79,6 +100,7 @@ a {
 }
 
 @-webkit-keyframes bounce {
+
     0%,
     20%,
     50%,
@@ -100,6 +122,7 @@ a {
 }
 
 @keyframes bounce {
+
     0%,
     20%,
     50%,
@@ -126,7 +149,7 @@ a {
     grid-area: nav;
 }
 
-#nav > ul {
+#nav>ul {
     height: 100%;
     padding-left: 0;
     display: -webkit-box;
@@ -217,6 +240,24 @@ a {
     flex-wrap: wrap;
 }
 
+#article2 {
+    -ms-grid-row: 3;
+    -ms-grid-column: 3;
+    grid-area: article;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: 2%;
+}
+
 /* Handle card styling */
 .fullCard {
     display: -webkit-box;
@@ -239,13 +280,7 @@ a {
     background: #fc4a1a;
     /* fallback for old browsers */
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-gradient(
-        linear,
-        left top,
-        right top,
-        from(#f7b733),
-        to(#d44c27)
-    );
+    background: -webkit-gradient(linear, left top, right top, from(#f7b733), to(#d44c27));
     background: linear-gradient(to right, #f7b733, #d44c27);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
@@ -291,13 +326,7 @@ a {
     background: #fc4a1a;
     /* fallback for old browsers */
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-gradient(
-        linear,
-        left top,
-        right top,
-        from(#f7b733),
-        to(#d44c27)
-    );
+    background: -webkit-gradient(linear, left top, right top, from(#f7b733), to(#d44c27));
     background: linear-gradient(to right, #f7b733, #d44c27);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
@@ -315,6 +344,28 @@ a {
 
     background-color: white;
     margin: 0 auto;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+form {
+    align-self: center;
+    margin: auto 0;
+}
+
+label,
+input {
+    margin: 5px 0;
+}
+
+
+form.submitted input:invalid {
+    background: rgb(255, 233, 233);
 }
 
 /* Assignment 1 - Temperature Converter */
@@ -363,7 +414,8 @@ label[for="celsius"] {
     text-align: center;
 }
 
-#submit-btn {
+#submit-btn,
+#next-btn {
     margin: 10px;
     padding: 10px 20px;
     font-size: 1em;
@@ -372,7 +424,8 @@ label[for="celsius"] {
     border: none;
 }
 
-#reset-btn {
+#reset-btn,
+#exit-btn {
     margin: 10px;
     padding: 10px 20px;
     font-size: 1em;
@@ -481,6 +534,7 @@ label[for="celsius"] {
     left: 5%;
     font-style: italic;
 }
+
 /* End of Assignment 3 styling */
 
 #footer {
@@ -514,7 +568,7 @@ label[for="celsius"] {
 }
 
 @media (max-width: 750px) {
-    body {
+    #body-container {
         grid-template-areas:
             "header"
             "nav"
@@ -526,12 +580,21 @@ label[for="celsius"] {
         grid-template-columns: 1fr;
     }
 
+    #body-container2 {
+        grid-template-areas:
+            "nav"
+            "article"
+            "footer";
+        grid-template-rows: 20% 1fr 1fr;
+        grid-template-columns: 1fr;
+    }
+
     #header-title {
         font-size: 30px;
         padding: 0 20px;
     }
 
-    #header > img {
+    #header>img {
         -o-object-fit: cover;
         object-fit: cover;
     }
@@ -545,7 +608,7 @@ label[for="celsius"] {
         max-height: 20px;
     }
 
-    #nav > ul {
+    #nav>ul {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
