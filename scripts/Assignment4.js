@@ -6,26 +6,14 @@ var isEdgeIE = browserRegex.test(navigator.userAgent);
 
 /*      INPUT PAGE      */
 
-
-// TODO: Validate if user exists
-const validUser = () => {
-    // Check if user already exists in sessionStorage
-    // If SSN exists
-    // Clear the SS# input
-    // If email exists
-    // Clear the email input
-
-}
-
-
 // Save data from input form to sessionStorage
 const saveFormData = () => {
     const newPerson = {
-        "fName": document.querySelector("#firstName").value,
-        "lName": document.querySelector("#lastName").value,
-        "dob": document.querySelector("#dob").value,
-        "ssn": document.querySelector("#ssn").value,
-        "email": document.querySelector("#formEmail").value
+        fName: document.querySelector("#firstName").value,
+        lName: document.querySelector("#lastName").value,
+        dob: document.querySelector("#dob").value,
+        ssn: document.querySelector("#ssn").value,
+        email: document.querySelector("#formEmail").value,
     };
 
     // Removes the sessionStorage entry from VSCode Live Server
@@ -34,11 +22,10 @@ const saveFormData = () => {
     // Add entry to sessionStorage for user input
     const entry = `Entry_${sessionStorage.length + 1}`;
     sessionStorage.setItem(entry, JSON.stringify(newPerson));
-}
-
+};
 
 // Handle form submissions
-const submitForm = (event) => {
+const submitForm = event => {
     if (!isEdgeIE) {
         event.preventDefault();
         // Save the data to sessionStorage
@@ -47,30 +34,30 @@ const submitForm = (event) => {
         // Submits the form
         document.querySelector("#inputForm").submit();
     }
-}
-
+};
 
 // Validate form data
-const validateForm = (form) => {
-    return function () {
+const validateForm = form => {
+    return function() {
         if (form.checkValidity()) {
-            saveFormData();
-            clearForm();
+            if (isEdgeIE) {
+                form.submit();
+            } else {
+                saveFormData();
+                clearForm();
+            }
         } else {
             document.querySelector("#inputForm").className = "submitted";
         }
-    }
-}
-
+    };
+};
 
 // Clears the form
 const clearForm = () => {
     window.location.reload();
-}
-
+};
 
 /*      OUTPUT PAGE     */
-
 
 // Creates a <td></td>
 function createTableData(data) {
@@ -78,7 +65,6 @@ function createTableData(data) {
     tableData.textContent = data;
     return tableData;
 }
-
 
 // Adds a row for each person input
 function addPersonToTable() {
@@ -98,7 +84,6 @@ function addPersonToTable() {
     table.appendChild(tableRow);
 }
 
-
 // For instantiating Person object
 function Person(fName, lName, dob, ssn, email) {
     this.fName = fName;
@@ -109,6 +94,29 @@ function Person(fName, lName, dob, ssn, email) {
     this.addToTable = addPersonToTable;
 }
 
+// Display data to table for IE and Edge users
+const displayResultEdgeIE = () => {
+    // Get the Query String data and decode URI
+    let formData = decodeURIComponent(location.search);
+    let formArray = [];
+
+    // Parse the data so it only contains the form data, also replace all '+'
+    formData = formData.slice(1).replace(/\+/g, " ");
+
+    // Split the data by '&' and store into an Array
+    formArray = formData.split("&");
+
+    // Use the .map to obtain only the data and store it in local variables
+    const [fName, lName, dob, ssn, email] = formArray.map(data => {
+        return data.split("=")[1];
+    });
+
+    // Instantiate a Person object
+    const newPerson = new Person(fName, lName, dob, ssn, email);
+
+    // Call the Person.addToTable()
+    newPerson.addToTable();
+};
 
 // Display data to table
 const displayResult = () => {
@@ -123,21 +131,21 @@ const displayResult = () => {
             retrievedObj.lName,
             retrievedObj.dob,
             retrievedObj.ssn,
-            retrievedObj.email
+            retrievedObj.email,
         );
 
         // Add data to the table
         newPerson.addToTable();
     }
-}
-
+};
 
 // Removes all data from sessionStorage and goes back to the Online Form
 const resetEverything = () => {
-    sessionStorage.clear();
+    if (!isEdgeIE) {
+        sessionStorage.clear();
+    }
     document.querySelector("#outputForm").submit();
-}
-
+};
 
 const createEventListeners = () => {
     // Access the selectedLi link
@@ -148,8 +156,11 @@ const createEventListeners = () => {
         document.querySelector("#nav").scrollIntoView();
     }
 
+    // Depending on if edge/ie, location.pathname will return something different
+    const filePath = location.pathname;
+
     // Input Page
-    if (location.pathname === "/Assign4.html") {
+    if (filePath.includes("/Assign4.html")) {
         // On load, focus on the first name input
         document.querySelector("#firstName").focus();
 
@@ -164,10 +175,17 @@ const createEventListeners = () => {
         // Event handler for when user clicks on next on the input form
         const nextBtn = document.querySelector("#next-btn");
         nextBtn.addEventListener("click", validateForm(inputForm));
+    } else if (filePath.includes("/Assign4-output.html")) {
+        // IE/Edge sessionStorage does not work for local files opened in browser
+        // See: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/8816771/
 
-    } else if (location.pathname === "/Assign4-output.html") {
-        // Output Page
-        displayResult();
+        if (isEdgeIE) {
+            // Use Query String to obtain form data
+            displayResultEdgeIE();
+        } else {
+            // Output Page
+            displayResult();
+        }
 
         // Event handler for the exit button
         const exitBtn = document.querySelector("#exit-btn");
