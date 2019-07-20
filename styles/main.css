@@ -100,7 +100,6 @@ a {
 }
 
 @-webkit-keyframes bounce {
-
     0%,
     20%,
     50%,
@@ -122,7 +121,6 @@ a {
 }
 
 @keyframes bounce {
-
     0%,
     20%,
     50%,
@@ -149,7 +147,7 @@ a {
     grid-area: nav;
 }
 
-#nav>ul {
+#nav > ul {
     height: 100%;
     padding-left: 0;
     display: -webkit-box;
@@ -280,7 +278,13 @@ a {
     background: #fc4a1a;
     /* fallback for old browsers */
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-gradient(linear, left top, right top, from(#f7b733), to(#d44c27));
+    background: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        from(#f7b733),
+        to(#d44c27)
+    );
     background: linear-gradient(to right, #f7b733, #d44c27);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
@@ -326,7 +330,13 @@ a {
     background: #fc4a1a;
     /* fallback for old browsers */
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-gradient(linear, left top, right top, from(#f7b733), to(#d44c27));
+    background: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        from(#f7b733),
+        to(#d44c27)
+    );
     background: linear-gradient(to right, #f7b733, #d44c27);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
@@ -356,13 +366,14 @@ td {
 form {
     align-self: center;
     margin: auto 0;
+    text-align: center;
 }
 
 label,
 input {
     margin: 5px 0;
+    width: 70%;
 }
-
 
 form.submitted input:invalid {
     background: rgb(255, 233, 233);
@@ -377,6 +388,11 @@ form.submitted input:invalid {
     margin: 0 auto;
     color: #d44c27;
     margin-top: 10px;
+}
+
+#assignment-description {
+    margin: auto;
+    color: #ff3700;
 }
 
 /* Removes the number scroll for input type="number" */
@@ -504,7 +520,7 @@ label[for="celsius"] {
     position: absolute;
     top: 20%;
     right: 18%;
-    font-size: .9rem;
+    font-size: 0.9rem;
 }
 
 #checkAmount {
@@ -594,7 +610,7 @@ label[for="celsius"] {
         padding: 0 20px;
     }
 
-    #header>img {
+    #header > img {
         -o-object-fit: cover;
         object-fit: cover;
     }
@@ -608,7 +624,7 @@ label[for="celsius"] {
         max-height: 20px;
     }
 
-    #nav>ul {
+    #nav > ul {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
