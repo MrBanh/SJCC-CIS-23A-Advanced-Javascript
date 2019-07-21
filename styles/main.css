@@ -365,15 +365,14 @@ td {
 
 form {
     align-self: center;
-    margin: auto 0;
     text-align: center;
 }
 
 label,
 input {
     margin: 5px 0;
-    width: 70%;
 }
+
 
 form.submitted input:invalid {
     background: rgb(255, 233, 233);
@@ -432,7 +431,7 @@ label[for="celsius"] {
 
 #submit-btn,
 #next-btn {
-    margin: 10px;
+    margin: auto;
     padding: 10px 20px;
     font-size: 1em;
     background-color: white;
