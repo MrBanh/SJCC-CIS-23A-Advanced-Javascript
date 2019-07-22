@@ -394,6 +394,13 @@ form.submitted input:invalid {
     color: #ff3700;
 }
 
+#invalidMsg {
+    color: red;
+    text-align: center;
+    margin: 0 auto;
+}
+
+
 /* Removes the number scroll for input type="number" */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
